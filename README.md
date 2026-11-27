@@ -1,6 +1,8 @@
 # XHabit
 
-Clean-room, open-source, bilingual (**Persian / English**) habit tracker built with Flutter, featuring dual **Jalali (Shamsi) & Gregorian** calendars, **Day Modes**, unified **To Do List**, **2 responsive Android Home Screen Widgets**, automatic **Obsidian Vault** Markdown mirroring, automatic **Google Account (Drive & Calendar)** sync, and an **in-app GitHub Release updater**.
+[English](README.md) | [فارسی](README.fa.md)
+
+Clean-room, open-source, bilingual (**Persian / English**) habit tracker built with Flutter, featuring dual **Jalali (Shamsi) & Gregorian** calendars, **Day Modes**, unified **To Do List**, **4 responsive Android Home Screen Widgets**, automatic **Obsidian Vault** Markdown mirroring, automatic **Google Account (Drive & Calendar)** sync, and an **in-app GitHub Release updater**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-84cc16.svg)](LICENSE)
 [![Platform: Android](https://img.shields.io/badge/Platform-Android%20(API%2024%2B)-informational.svg)]()
@@ -27,8 +29,10 @@ Clean-room, open-source, bilingual (**Persian / English**) habit tracker built w
 - **Themes & Sounds:** OLED Dark & Crisp Light themes, 3 font scale presets, and a low-latency native Android `AudioTrack` PCM sound engine (`Pop`, `Drop`, `Wood`, `Minimal`) + confetti celebrations.
 
 ### Android Home Screen Widgets (`home_widget`)
-1. **Adaptive Single-Habit Widget (`2x1` – `4x4`):** Responsive layout scaling cleanly from compact toggles to full `4x4` metric footers and clickable checklist sub-steps.
+1. **Adaptive Single-Habit Widget (`2x1` – `4x4`):** Responsive layout scaling cleanly from compact toggles to full `4x4` metric footers and clickable checklist sub-steps, with right-aligned action button and native Android 12+ rounded corners.
 2. **Daily Tasks List Widget (`2x2` – `4x6`):** Scrollable today list with direct widget checkoffs, expandable sub-steps, and persistent Light/Dark widget theme.
+3. **To-Do List Widget (`2x2` – `4x6`):** Scrollable one-off & shopping tasks list matching the Daily List aesthetic.
+4. **Quick Day Mode Switcher Widget (`2x1` – `4x1`):** Cycle Day Modes directly from the home screen with prev/next buttons.
 
 ### Automatic Sync Integrations (Zero Backend Servers)
 - **Obsidian Sync (`XHabit/` Folder Isolation):** Pick your Obsidian Vault once, toggle **Automatic Sync**, and XHabit mirrors your entire database (`XHabit Home.md`, `Daily/<date>.md`, `Habits/<name>.md`, `Categories/`, `Day Modes.md`, `To Do List.md`) as interlinked `[[wikilink]]` Markdown pages in background — never touching personal notes outside `XHabit/`, and cleaning only `XHabit/` if you erase data.
@@ -100,9 +104,11 @@ If you fork this repository for your own release:
 **XHabit** یک اپلیکیشن متن‌باز، بدون تبلیغات و محلی‌محور (Local-First) برای ساخت عادت‌های پایدار و ترک عادت‌های منفی است:
 - پشتیبانی کامل از **تقویم شمسی و میلادی** به همراه زبان فارسی و انگلیسی
 - سیستم **مودهای روزانه (Day Modes)** با قابلیت زمان‌بندی روی تقویم و بخش **To Do List** سریع
-- **۲ ویجت تعاملی اندروید** برای ثبت عادت‌ها مستقیم از صفحه اصلی گوشی
-- همگام‌سازی خودکار پس‌زمینه با **ابزیدین (Obsidian)** فقط داخل پوشه `XHabit/` و اتصال مستقیم به **حساب گوگل و تقویم گوگل**
+- **۴ ویجت تعاملی اندروید** (Adaptive، لیست روزانه، کارهای یک‌باره و تغییر سریع مود روز)
+- همگام‌سازی خودکار پس‌زمینه با **ابسیدین (Obsidian)** فقط داخل پوشه `XHabit/` و اتصال مستقیم به **حساب گوگل و تقویم گوگل**
 - **به‌روزرسانی درون‌برنامه‌ای مستقیم از گیت‌هاب** و قفل اثر انگشت / پین
+
+برای مطالعه راهنمای کامل فارسی به [README.fa.md](README.fa.md) مراجعه کنید.
 
 ## License
 Released under the [MIT License](LICENSE).
