@@ -563,7 +563,9 @@ class _HabitActionCircleState extends State<HabitActionCircle>
     if (widget.habit.trackingStyle == TrackingStyle.count &&
         !widget.habit.isQuit) {
       if (widget.done) {
-        inner = Container(
+        inner = AnimatedContainer(
+          duration: const Duration(milliseconds: 240),
+          curve: Curves.easeOutCubic,
           width: size,
           height: size,
           decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
@@ -578,12 +580,18 @@ class _HabitActionCircleState extends State<HabitActionCircle>
             color: accent.withValues(alpha: 0.08),
             shape: BoxShape.circle,
           ),
-          child: CustomPaint(
-            painter: _CircleArcPainter(
-              progress: widget.ratio,
-              trackColor: accent.withValues(alpha: 0.22),
-              fillColor: accent,
-              strokeWidth: 2.6,
+          child: TweenAnimationBuilder<double>(
+            tween: Tween<double>(end: widget.ratio.clamp(0.0, 1.0)),
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOutCubic,
+            builder: (_, animRatio, child) => CustomPaint(
+              painter: _CircleArcPainter(
+                progress: animRatio,
+                trackColor: accent.withValues(alpha: 0.22),
+                fillColor: accent,
+                strokeWidth: 2.6,
+              ),
+              child: child,
             ),
             child: Center(
               child: Icon(Icons.add_rounded, size: size * 0.48, color: xc.text),
@@ -593,7 +601,9 @@ class _HabitActionCircleState extends State<HabitActionCircle>
       }
     } else if (widget.habit.isQuit) {
       if (widget.slipped) {
-        inner = Container(
+        inner = AnimatedContainer(
+          duration: const Duration(milliseconds: 240),
+          curve: Curves.easeOutCubic,
           width: size,
           height: size,
           decoration: BoxDecoration(
@@ -609,7 +619,9 @@ class _HabitActionCircleState extends State<HabitActionCircle>
           ),
         );
       } else {
-        inner = Container(
+        inner = AnimatedContainer(
+          duration: const Duration(milliseconds: 240),
+          curve: Curves.easeOutCubic,
           width: size,
           height: size,
           decoration: BoxDecoration(
@@ -630,7 +642,9 @@ class _HabitActionCircleState extends State<HabitActionCircle>
         );
       }
     } else {
-      inner = Container(
+      inner = AnimatedContainer(
+        duration: const Duration(milliseconds: 240),
+        curve: Curves.easeOutCubic,
         width: size,
         height: size,
         decoration: BoxDecoration(
@@ -851,12 +865,18 @@ class DayProgressRing extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: CustomPaint(
-        painter: _CircleArcPainter(
-          progress: progress,
-          trackColor: xc.card3,
-          fillColor: col,
-          strokeWidth: strokeWidth,
+      child: TweenAnimationBuilder<double>(
+        tween: Tween<double>(end: progress.clamp(0.0, 1.0)),
+        duration: const Duration(milliseconds: 340),
+        curve: Curves.easeOutCubic,
+        builder: (_, animProgress, child) => CustomPaint(
+          painter: _CircleArcPainter(
+            progress: animProgress,
+            trackColor: xc.card3,
+            fillColor: col,
+            strokeWidth: strokeWidth,
+          ),
+          child: child,
         ),
         child: Center(
           child: Text(

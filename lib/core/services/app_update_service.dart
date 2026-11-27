@@ -73,7 +73,7 @@ class AppUpdateService {
     defaultValue: 'ikianixi/xhabit',
   );
 
-  static const String _fallbackVersionName = '1.0.0';
+  static const String _fallbackVersionName = '1.0.1';
   static const int _fallbackVersionCode = 1;
 
   Future<AppVersionInfo> getInstalledVersion() async {

@@ -924,5 +924,16 @@ void main() {
       expect(dm.isDayMode, isTrue);
       expect(dm.includeAll, isFalse);
     });
+
+    test('AppSettings.widgetOpacity clamps to 0.0..1.0 and serializes', () {
+      const base = AppSettings();
+      expect(base.widgetOpacity, 1.0);
+      final clampedLow = base.copyWith(widgetOpacity: -0.5);
+      expect(clampedLow.widgetOpacity, 0.0);
+      final clampedHigh = base.copyWith(widgetOpacity: 1.8);
+      expect(clampedHigh.widgetOpacity, 1.0);
+      final mid = base.copyWith(widgetOpacity: 0.65);
+      expect(mid.toBackupMap()['widgetOpacity'], 0.65);
+    });
   });
 }

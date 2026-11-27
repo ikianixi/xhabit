@@ -120,6 +120,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
         }
 
         val isLight = WidgetConfigStore.resolveIsLight(widgetData, widgetId)
+        val bgAlpha = WidgetConfigStore.resolveOpacityAlpha(widgetData)
         val pillRes = if (isLight) R.drawable.widget_pill_light else R.drawable.widget_pill_dark
         val txtMain = if (isLight) Color.parseColor("#0F172A") else Color.WHITE
         val txtMuted = if (isLight) Color.parseColor("#475569") else Color.parseColor("#94A3B8")
@@ -136,7 +137,13 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
         views.setInt(
             android.R.id.background,
             "setBackgroundResource",
-            if (isLight) R.drawable.widget_bg_light else R.drawable.widget_bg_dark,
+            if (bgAlpha < 255) {
+                R.drawable.widget_clip_mask
+            } else if (isLight) {
+                R.drawable.widget_bg_light
+            } else {
+                R.drawable.widget_bg_dark
+            },
         )
 
         views.setImageViewBitmap(
@@ -148,6 +155,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                 withGlow = withGlow && !json.optBoolean("empty", true),
                 widthDp = cardW,
                 heightDp = cardH,
+                bgAlpha = bgAlpha,
             ),
         )
 
@@ -246,7 +254,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
             "2x2" -> (cardW - 78f).coerceAtLeast(65f)
             else -> (cardW - 184f).coerceAtLeast(80f)
         }
-        val titleSp = if (mode == "2x1" || mode == "2x2") 11f else 12f
+        val titleSp = if (mode == "2x1" || mode == "2x2") 12.2f else 13.4f
         views.setImageViewBitmap(
             R.id.adaptive_title_img,
             WidgetCanvasHelper.renderTextBitmap(
@@ -279,7 +287,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                         WidgetCanvasHelper.renderTextBitmap(
                             context = context,
                             text = "$countVal/$countTarget",
-                            spSize = if (is3) 10f else 9.5f,
+                            spSize = if (is3) 11f else 10.5f,
                             color = txtMuted,
                             weight = 1,
                             maxWidthDp = titleMaxDp,
@@ -291,7 +299,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                         WidgetCanvasHelper.renderTextBitmap(
                             context = context,
                             text = "$streak",
-                            spSize = if (is3) 10f else 9.5f,
+                            spSize = if (is3) 11f else 10.5f,
                             color = color,
                             weight = 2,
                             maxWidthDp = 42f,
@@ -364,7 +372,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                     WidgetCanvasHelper.renderTextBitmap(
                         context = context,
                         text = mSub,
-                        spSize = 8.5f,
+                        spSize = 9.5f,
                         color = txtMuted,
                         weight = 1,
                         maxWidthDp = titleMaxDp,
@@ -412,7 +420,7 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                     WidgetCanvasHelper.renderTextBitmap(
                         context = context,
                         text = subStr,
-                        spSize = 9f,
+                        spSize = 10.2f,
                         color = txtMuted,
                         weight = 0,
                         maxWidthDp = titleMaxDp,
@@ -507,14 +515,14 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                     val kpiMaxDp = ((cardW - 36f) / 3f).coerceAtLeast(52f)
                     views.setImageViewBitmap(
                         R.id.kpi_streak_val_img,
-                        WidgetCanvasHelper.renderTextBitmap(context, "$streak", 13f, color, 2, kpiMaxDp),
+                        WidgetCanvasHelper.renderTextBitmap(context, "$streak", 14f, color, 2, kpiMaxDp),
                     )
                     views.setImageViewBitmap(
                         R.id.kpi_streak_lbl_img,
                         WidgetCanvasHelper.renderTextBitmap(
                             context,
                             json.optString("lblStreak", "Streak"),
-                            9f,
+                            10f,
                             txtMuted,
                             0,
                             kpiMaxDp,
@@ -522,14 +530,14 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                     )
                     views.setImageViewBitmap(
                         R.id.kpi_best_val_img,
-                        WidgetCanvasHelper.renderTextBitmap(context, "$best", 13f, txtMain, 2, kpiMaxDp),
+                        WidgetCanvasHelper.renderTextBitmap(context, "$best", 14f, txtMain, 2, kpiMaxDp),
                     )
                     views.setImageViewBitmap(
                         R.id.kpi_best_lbl_img,
                         WidgetCanvasHelper.renderTextBitmap(
                             context,
                             json.optString("lblBest", "Best"),
-                            9f,
+                            10f,
                             txtMuted,
                             0,
                             kpiMaxDp,
@@ -537,14 +545,14 @@ class AdaptiveHabitWidgetProvider : HomeWidgetProvider() {
                     )
                     views.setImageViewBitmap(
                         R.id.kpi_score_val_img,
-                        WidgetCanvasHelper.renderTextBitmap(context, "$score%", 13f, txtMain, 2, kpiMaxDp),
+                        WidgetCanvasHelper.renderTextBitmap(context, "$score%", 14f, txtMain, 2, kpiMaxDp),
                     )
                     views.setImageViewBitmap(
                         R.id.kpi_score_lbl_img,
                         WidgetCanvasHelper.renderTextBitmap(
                             context,
                             json.optString("lblScore", "Score"),
-                            9f,
+                            10f,
                             txtMuted,
                             0,
                             kpiMaxDp,

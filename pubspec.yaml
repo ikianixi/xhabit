@@ -1,7 +1,7 @@
 name: xhabit
 description: XHabit - Clean-room bilingual (Persian/English) habit tracker with dual Gregorian & Jalali calendars, home widgets, and future sync ports.
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ^3.10.0

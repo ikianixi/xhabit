@@ -599,6 +599,8 @@ class WidgetSyncService {
 
     await Future.wait([
       HomeWidget.saveWidgetData('widget_theme', settings.widgetTheme.name),
+      HomeWidget.saveWidgetData(
+          'widget_opacity_pct', (settings.widgetOpacity * 100).round().clamp(0, 100)),
       HomeWidget.saveWidgetData('widget_locale', settings.localeCode),
       HomeWidget.saveWidgetData(
           'widget_celebration', settings.widgetCelebrationOverlay),
@@ -631,9 +633,13 @@ Future<AppSettings> readWidgetSettingsSnapshot() async {
   final calStr = prefs.getString('calendarSystem') ?? CalendarSystem.jalali.name;
   final weekStr = prefs.getString('weekStartDay') ?? WeekStartDay.saturday.name;
   final hwThemeStr = await HomeWidget.getWidgetData<String>('widget_theme');
+  final hwOpacityPct = await HomeWidget.getWidgetData<int>('widget_opacity_pct');
   final wThemeStr = hwThemeStr ??
       prefs.getString('widgetTheme') ??
       WidgetThemeMode.dark.name;
+  final wOpacity = hwOpacityPct != null
+      ? (hwOpacityPct / 100.0).clamp(0.0, 1.0)
+      : (prefs.getDouble('widgetOpacity') ?? 1.0).clamp(0.0, 1.0);
   final hwLocale = await HomeWidget.getWidgetData<String>('widget_locale');
   final hwCeleb = await HomeWidget.getWidgetData<bool>('widget_celebration');
   return AppSettings(
@@ -641,6 +647,7 @@ Future<AppSettings> readWidgetSettingsSnapshot() async {
     calendarSystem: CalendarSystem.values.asNameMap()[calStr] ?? CalendarSystem.jalali,
     weekStartDay: WeekStartDay.values.asNameMap()[weekStr] ?? WeekStartDay.saturday,
     widgetTheme: WidgetThemeMode.values.asNameMap()[wThemeStr] ?? WidgetThemeMode.dark,
+    widgetOpacity: wOpacity,
     widgetCelebrationOverlay:
         hwCeleb ?? prefs.getBool('widgetCelebrationOverlay') ?? true,
     customStoragePath: prefs.getString('customStoragePath'),

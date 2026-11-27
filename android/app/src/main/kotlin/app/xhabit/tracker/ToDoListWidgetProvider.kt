@@ -86,6 +86,7 @@ class ToDoListWidgetProvider : HomeWidgetProvider() {
     ) {
         val (cardW, cardH) = resolveWidgetDp(context, options)
         val isLight = WidgetConfigStore.resolveIsLight(widgetData, widgetId)
+        val bgAlpha = WidgetConfigStore.resolveOpacityAlpha(widgetData)
         val txtMain = if (isLight) Color.parseColor("#0F172A") else Color.WHITE
         val txtMuted = if (isLight) Color.parseColor("#475569") else Color.parseColor("#94A3B8")
         val lime = if (isLight) Color.parseColor("#65A30D") else Color.parseColor("#84CC16")
@@ -102,9 +103,31 @@ class ToDoListWidgetProvider : HomeWidgetProvider() {
         views.setInt(
             android.R.id.background,
             "setBackgroundResource",
-            if (isLight) R.drawable.widget_bg_light else R.drawable.widget_bg_dark,
+            if (bgAlpha < 255) {
+                R.drawable.widget_clip_mask
+            } else if (isLight) {
+                R.drawable.widget_bg_light
+            } else {
+                R.drawable.widget_bg_dark
+            },
         )
-        views.setViewVisibility(R.id.todo_list_bg_img, android.view.View.GONE)
+        if (bgAlpha < 255) {
+            views.setViewVisibility(R.id.todo_list_bg_img, android.view.View.VISIBLE)
+            views.setImageViewBitmap(
+                R.id.todo_list_bg_img,
+                WidgetCanvasHelper.renderCardBackgroundBitmap(
+                    context = context,
+                    isLight = isLight,
+                    accent = lime,
+                    withGlow = false,
+                    widthDp = cardW,
+                    heightDp = cardH,
+                    bgAlpha = bgAlpha,
+                ),
+            )
+        } else {
+            views.setViewVisibility(R.id.todo_list_bg_img, android.view.View.GONE)
+        }
 
         val openTasksIntent = HomeWidgetLaunchIntent.getActivity(
             context,
@@ -118,7 +141,7 @@ class ToDoListWidgetProvider : HomeWidgetProvider() {
             WidgetCanvasHelper.renderTextBitmap(
                 context = context,
                 text = resolved.headerTitle,
-                spSize = 12f,
+                spSize = 13.4f,
                 color = txtMain,
                 weight = 2,
                 maxWidthDp = (cardW - 85f).coerceAtLeast(80f),
@@ -129,10 +152,10 @@ class ToDoListWidgetProvider : HomeWidgetProvider() {
             WidgetCanvasHelper.renderTextBitmap(
                 context = context,
                 text = "${resolved.doneCount}/${resolved.totalCount}",
-                spSize = 10f,
+                spSize = 11.2f,
                 color = txtMuted,
                 weight = 2,
-                maxWidthDp = 50f,
+                maxWidthDp = 54f,
             ),
         )
 

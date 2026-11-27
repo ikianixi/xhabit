@@ -727,6 +727,7 @@ class AppSettings {
     this.isDarkMode = true,
     this.homeLayout = HomeLayout.grid,
     this.widgetTheme = WidgetThemeMode.dark,
+    this.widgetOpacity = 1.0,
     this.soundProfile = SoundProfile.pop,
     this.fontScaleMode = FontScaleMode.medium,
     this.widgetCelebrationOverlay = true,
@@ -775,6 +776,7 @@ class AppSettings {
   final bool isDarkMode;
   final HomeLayout homeLayout;
   final WidgetThemeMode widgetTheme;
+  final double widgetOpacity;
   final SoundProfile soundProfile;
   final FontScaleMode fontScaleMode;
   final bool widgetCelebrationOverlay;
@@ -823,6 +825,7 @@ class AppSettings {
     bool? isDarkMode,
     HomeLayout? homeLayout,
     WidgetThemeMode? widgetTheme,
+    double? widgetOpacity,
     SoundProfile? soundProfile,
     FontScaleMode? fontScaleMode,
     bool? widgetCelebrationOverlay,
@@ -876,6 +879,7 @@ class AppSettings {
       isDarkMode: isDarkMode ?? this.isDarkMode,
       homeLayout: homeLayout ?? this.homeLayout,
       widgetTheme: widgetTheme ?? this.widgetTheme,
+      widgetOpacity: (widgetOpacity ?? this.widgetOpacity).clamp(0.0, 1.0),
       soundProfile: soundProfile ?? this.soundProfile,
       fontScaleMode: fontScaleMode ?? this.fontScaleMode,
       widgetCelebrationOverlay:
@@ -944,6 +948,7 @@ class AppSettings {
         'isDarkMode': isDarkMode,
         'homeLayout': homeLayout.name,
         'widgetTheme': widgetTheme.name,
+        'widgetOpacity': widgetOpacity,
         'soundProfile': soundProfile.name,
         'fontScaleMode': fontScaleMode.name,
         'widgetCelebrationOverlay': widgetCelebrationOverlay,

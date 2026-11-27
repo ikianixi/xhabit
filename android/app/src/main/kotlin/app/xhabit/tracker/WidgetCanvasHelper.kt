@@ -96,10 +96,9 @@ object WidgetCanvasHelper {
     }
 
     /**
-     * Renders ONLY the soft top-right radial glow overlay onto a transparent bitmap.
-     * The card's solid background, hairline 1dp border, and anti-aliased rounded corners
-     * are rendered natively by the GPU via `@drawable/widget_bg_dark` / `widget_bg_light`
-     * with `@dimen/widget_corner_radius` (`system_app_widget_background_radius` on API 31+).
+     * Renders the optional background tint (when `bgAlpha < 255`) and soft top-right radial glow
+     * onto a transparent bitmap, clipped cleanly to the launcher's rounded corners by
+     * `@android:id/background` (`clipToOutline="true"`).
      */
     fun renderCardBackgroundBitmap(
         context: Context,
@@ -108,8 +107,10 @@ object WidgetCanvasHelper {
         withGlow: Boolean,
         widthDp: Float,
         heightDp: Float,
+        bgAlpha: Int = 255,
     ): Bitmap {
-        if (!withGlow) {
+        val alpha = bgAlpha.coerceIn(0, 255)
+        if (!withGlow && alpha >= 255) {
             return Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
         }
         val baseScale = context.resources.displayMetrics.density.coerceIn(1.5f, 2.0f)
@@ -126,17 +127,26 @@ object WidgetCanvasHelper {
         val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         bmp.density = context.resources.displayMetrics.densityDpi
         val canvas = Canvas(bmp)
-        val glowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            shader = RadialGradient(
-                w * 0.92f,
-                h * 0.08f,
-                max(w, h) * 0.68f,
-                intArrayOf(tintWithAlpha(accent, if (isLight) 0.14f else 0.19f), Color.TRANSPARENT),
-                floatArrayOf(0f, 1f),
-                Shader.TileMode.CLAMP,
+        if (alpha < 255 && alpha > 0) {
+            val baseCol = if (isLight) Color.WHITE else Color.parseColor("#0B0B0E")
+            canvas.drawColor(
+                Color.argb(alpha, Color.red(baseCol), Color.green(baseCol), Color.blue(baseCol)),
             )
         }
-        canvas.drawRect(0f, 0f, w.toFloat(), h.toFloat(), glowPaint)
+        if (withGlow && alpha > 0) {
+            val glowAlpha = (if (isLight) 0.14f else 0.19f) * (alpha / 255f)
+            val glowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                shader = RadialGradient(
+                    w * 0.92f,
+                    h * 0.08f,
+                    max(w, h) * 0.68f,
+                    intArrayOf(tintWithAlpha(accent, glowAlpha), Color.TRANSPARENT),
+                    floatArrayOf(0f, 1f),
+                    Shader.TileMode.CLAMP,
+                )
+            }
+            canvas.drawRect(0f, 0f, w.toFloat(), h.toFloat(), glowPaint)
+        }
         return bmp
     }
 

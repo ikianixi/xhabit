@@ -2960,7 +2960,7 @@ class SettingsScreen extends ConsumerWidget {
             Future.microtask(runCheck);
           }
 
-          final curVer = checkRes?.currentVersion.versionName ?? '1.0.0';
+          final curVer = checkRes?.currentVersion.versionName ?? '1.0.1';
           final rel = checkRes?.latestRelease;
           final pct = (progress * 100).round().clamp(0, 100);
 
@@ -3631,7 +3631,7 @@ class SettingsScreen extends ConsumerWidget {
                         icon: Icons.info_outline_rounded,
                         label: l10n.aboutXHabit,
                         trailingText: AppCalendar.localizeDigits(
-                            'v1.0.0', settings.localeCode),
+                            'v1.0.1', settings.localeCode),
                         showChevron: false,
                         onTap: () => _openAboutSheet(context),
                       ),

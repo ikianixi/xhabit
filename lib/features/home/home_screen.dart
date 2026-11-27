@@ -593,13 +593,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
 
-                    // 2. 7-Day Visible (31-Day Scrollable) Progress Rings (`.ring-strip`)
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 88,
-                        child: Directionality(
-                          textDirection: TextDirection.ltr,
-                          child: ListView.builder(
+                    // 2. Sticky Strip: Date Progress Rings + Filter/Score Bar + Categories
+                    // Header scrolls off first; then these controls lock at the top while only habit cards scroll.
+                    SliverPersistentHeader(
+                      pinned: true,
+                      delegate: _StickyDateStripDelegate(
+                        height: 202,
+                        backgroundColor: xc.bg,
+                        borderColor: xc.border,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              height: 88,
+                              child: Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: ListView.builder(
                             controller: _ringScroll,
                             scrollDirection: Axis.horizontal,
                             padding: const EdgeInsets.fromLTRB(10, 4, 10, 12),
@@ -685,13 +694,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                       ),
-                    ),
 
-                    // 3. Filter & Habit Score Bar (`.filter-score-bar`)
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 2, 16, 12),
-                        child: Row(
+                            // 3. Filter & Habit Score Bar (`.filter-score-bar`)
+                            SizedBox(
+                              height: 70,
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(16, 2, 16, 8),
+                                child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
@@ -787,15 +796,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         Icon(Icons.speed_rounded,
                                             size: 16, color: xc.text),
                                         const SizedBox(width: 7),
-                                        Text(
-                                          AppCalendar.localizeDigits(
-                                            '${displayedRate.toStringAsFixed(1)}%',
-                                            settings.localeCode,
-                                          ),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w800,
-                                            fontSize: 13,
-                                            color: xc.text,
+                                        TweenAnimationBuilder<double>(
+                                          tween: Tween<double>(end: displayedRate),
+                                          duration: const Duration(milliseconds: 420),
+                                          curve: Curves.easeOutCubic,
+                                          builder: (_, animRate, __) => Text(
+                                            AppCalendar.localizeDigits(
+                                              '${animRate.toStringAsFixed(1)}%',
+                                              settings.localeCode,
+                                            ),
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w800,
+                                              fontSize: 13,
+                                              color: xc.text,
+                                            ),
                                           ),
                                         ),
                                         const SizedBox(width: 4),
@@ -815,26 +829,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
 
-                    // 4. Sleek Pill Category Bar (`.cat-bar`)
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 44,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-                          children: [
-                            _CategoryPill(
-                              label: l10n.allCategories,
-                              active: effectiveCatId == null,
-                              onTap: () =>
-                                  setState(() => _selectedCategoryId = null),
-                            ),
-                            ...st.categories.map(
-                              (cat) => _CategoryPill(
-                                label: cat.name,
-                                active: effectiveCatId == cat.id,
-                                onTap: () => setState(
-                                    () => _selectedCategoryId = cat.id),
+                            // 4. Sleek Pill Category Bar (`.cat-bar`)
+                            SizedBox(
+                              height: 44,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                                children: [
+                                  _CategoryPill(
+                                    label: l10n.allCategories,
+                                    active: effectiveCatId == null,
+                                    onTap: () =>
+                                        setState(() => _selectedCategoryId = null),
+                                  ),
+                                  ...st.categories.map(
+                                    (cat) => _CategoryPill(
+                                      label: cat.name,
+                                      active: effectiveCatId == cat.id,
+                                      onTap: () => setState(
+                                          () => _selectedCategoryId = cat.id),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -1691,6 +1707,47 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
     );
   }
+}
+
+class _StickyDateStripDelegate extends SliverPersistentHeaderDelegate {
+  const _StickyDateStripDelegate({
+    required this.height,
+    required this.backgroundColor,
+    required this.borderColor,
+    required this.child,
+  });
+
+  final double height;
+  final Color backgroundColor;
+  final Color borderColor;
+  final Widget child;
+
+  @override
+  double get minExtent => height;
+
+  @override
+  double get maxExtent => height;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return Container(
+      height: height,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: overlapsContent || shrinkOffset > 0
+            ? Border(bottom: BorderSide(color: borderColor))
+            : null,
+      ),
+      child: child,
+    );
+  }
+
+  @override
+  bool shouldRebuild(covariant _StickyDateStripDelegate oldDelegate) => true;
 }
 
 class _FilterPill extends StatelessWidget {

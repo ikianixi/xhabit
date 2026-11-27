@@ -148,7 +148,7 @@ private class DailyListFactory(
                 WidgetCanvasHelper.renderTextBitmap(
                     context = context,
                     text = row.title,
-                    spSize = 10.5f,
+                    spSize = 11.5f,
                     color = if (row.done) WidgetCanvasHelper.tintWithAlpha(txtMuted, 0.65f) else txtMain,
                     weight = 0,
                     maxWidthDp = (rowTitleMaxDp - 24f).coerceAtLeast(60f),
@@ -178,7 +178,7 @@ private class DailyListFactory(
             WidgetCanvasHelper.renderTextBitmap(
                 context = context,
                 text = row.title,
-                spSize = 11.5f,
+                spSize = 12.8f,
                 color = if (row.done) WidgetCanvasHelper.tintWithAlpha(txtMuted, 0.55f) else txtMain,
                 weight = 1,
                 maxWidthDp = if (row.countText.isEmpty()) rowTitleMaxDp else (rowTitleMaxDp - 34f).coerceAtLeast(50f),
@@ -195,7 +195,7 @@ private class DailyListFactory(
                 WidgetCanvasHelper.renderTextBitmap(
                     context = context,
                     text = row.countText,
-                    spSize = 10f,
+                    spSize = 11f,
                     color = txtMuted,
                     weight = 1,
                     maxWidthDp = 40f,

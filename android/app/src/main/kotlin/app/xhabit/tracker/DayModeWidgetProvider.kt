@@ -88,6 +88,7 @@ class DayModeWidgetProvider : HomeWidgetProvider() {
         val isWide = cardW >= 235f
         val isMed = cardW >= 175f
         val isLight = WidgetConfigStore.resolveIsLight(widgetData, widgetId)
+        val bgAlpha = WidgetConfigStore.resolveOpacityAlpha(widgetData)
         val includeAll = WidgetConfigStore.getDayModeIncludeAll(widgetData, widgetId)
 
         val txtMain = if (isLight) Color.parseColor("#0F172A") else Color.WHITE
@@ -106,7 +107,13 @@ class DayModeWidgetProvider : HomeWidgetProvider() {
         views.setInt(
             android.R.id.background,
             "setBackgroundResource",
-            if (isLight) R.drawable.widget_bg_light else R.drawable.widget_bg_dark,
+            if (bgAlpha < 255) {
+                R.drawable.widget_clip_mask
+            } else if (isLight) {
+                R.drawable.widget_bg_light
+            } else {
+                R.drawable.widget_bg_dark
+            },
         )
 
         // Adaptive Widget style card backdrop with top-right radial glow matching active Day Mode color
@@ -119,6 +126,7 @@ class DayModeWidgetProvider : HomeWidgetProvider() {
                 withGlow = true,
                 widthDp = cardW,
                 heightDp = cardH,
+                bgAlpha = bgAlpha,
             ),
         )
 
@@ -142,7 +150,7 @@ class DayModeWidgetProvider : HomeWidgetProvider() {
             isMed -> (cardW - 144f).coerceAtLeast(68f)
             else -> (cardW - 130f).coerceAtLeast(44f)
         }
-        val titleSp = if (isMed) 12f else 11f
+        val titleSp = if (isMed) 13.2f else 12.2f
         views.setImageViewBitmap(
             R.id.day_mode_title_img,
             WidgetCanvasHelper.renderTextBitmap(
@@ -164,7 +172,7 @@ class DayModeWidgetProvider : HomeWidgetProvider() {
                 WidgetCanvasHelper.renderTextBitmap(
                     context = context,
                     text = subtitle,
-                    spSize = if (isMed) 9.5f else 8.8f,
+                    spSize = if (isMed) 10.5f else 9.8f,
                     color = txtMuted,
                     weight = 1,
                     maxWidthDp = titleMaxDp,

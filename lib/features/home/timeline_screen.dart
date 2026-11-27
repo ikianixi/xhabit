@@ -23,10 +23,30 @@ class TimelineScreen extends ConsumerStatefulWidget {
 
 class _TimelineScreenState extends ConsumerState<TimelineScreen> {
   final AudioPlayer _player = AudioPlayer();
+  final ScrollController _scrollController = ScrollController();
   String? _playingNoteId;
+  int _visibleLimit = 25;
+  int _totalAvailable = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (!_scrollController.hasClients) return;
+    if (_visibleLimit >= _totalAvailable) return;
+    final pos = _scrollController.position;
+    if (pos.pixels >= pos.maxScrollExtent - 180) {
+      setState(() => _visibleLimit += 25);
+    }
+  }
 
   @override
   void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
     _player.dispose();
     super.dispose();
   }
@@ -135,10 +155,29 @@ class _TimelineScreenState extends ConsumerState<TimelineScreen> {
             final bestDayName =
                 AppCalendar.weekdayFull(bestD.weekday, settings.localeCode);
 
-            final streakItems = active.take(3).map((h) {
+            final timelineEntries = <({
+              int timestamp,
+              HabitNote? note,
+              Habit? habit,
+              int streak,
+            })>[];
+
+            for (final n in st.notes) {
+              final h = st.habits.where((x) => x.id == n.habitId).firstOrNull;
+              if (h == null) continue;
+              timelineEntries.add((
+                timestamp: n.createdAtMs > 0 ? n.createdAtMs : n.updatedAtMs,
+                note: n,
+                habit: h,
+                streak: 0,
+              ));
+            }
+
+            for (final h in active) {
+              final byDate = st.completionsByDateFor(h.id);
               final stats = HabitEngine.computeStats(
                 h,
-                st.completionsByDateFor(h.id),
+                byDate,
                 st.checklistFor(h.id),
                 calendar: settings.calendarSystem,
                 weekStart: settings.weekStartDay,
@@ -146,10 +185,24 @@ class _TimelineScreenState extends ConsumerState<TimelineScreen> {
                 pauses: st.pauses,
                 monthlyGraceDays: settings.streakGraceDaysPerMonth,
               );
-              return (habit: h, streak: stats.currentStreak);
-            }).toList();
+              var latestTs = h.updatedAtMs;
+              for (final c in byDate.values) {
+                if (c.updatedAtMs > latestTs) latestTs = c.updatedAtMs;
+              }
+              timelineEntries.add((
+                timestamp: latestTs,
+                note: null,
+                habit: h,
+                streak: stats.currentStreak,
+              ));
+            }
+
+            timelineEntries.sort((a, b) => b.timestamp.compareTo(a.timestamp));
+            _totalAvailable = timelineEntries.length;
+            final visibleEntries = timelineEntries.take(_visibleLimit).toList();
 
             return ListView(
+              controller: _scrollController,
               padding: const EdgeInsets.only(bottom: 28),
               children: [
                 // 1. Header Row (`.hdr-row`)
@@ -342,7 +395,7 @@ class _TimelineScreenState extends ConsumerState<TimelineScreen> {
                 ),
 
                 // 4. Vertical Timeline Rail (`.tl-rail`)
-                if (st.notes.isEmpty && streakItems.isEmpty)
+                if (visibleEntries.isEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 32),
@@ -368,37 +421,34 @@ class _TimelineScreenState extends ConsumerState<TimelineScreen> {
                         ),
                         Column(
                           children: [
-                            ...st.notes.map((n) {
-                              final h = st.habits
-                                  .where((x) => x.id == n.habitId)
-                                  .firstOrNull;
-                              if (h == null) return const SizedBox.shrink();
-                              return TimelineRailNoteRow(
-                                habit: h,
-                                note: n,
-                                playing: _playingNoteId == n.id,
-                                settings: settings,
-                                onTogglePlay: () => _toggleAudio(n),
-                                onDelete: () => _confirmDeleteNote(n),
-                                onEditText: n.kind == NoteKind.text
-                                    ? () => Navigator.of(context).push(
-                                          MaterialPageRoute<void>(
-                                            builder: (_) => NoteEditorPage(
-                                              habit: h,
-                                              settings: settings,
-                                              existingNote: n,
+                            ...visibleEntries.map((entry) {
+                              final n = entry.note;
+                              final h = entry.habit!;
+                              if (n != null) {
+                                return TimelineRailNoteRow(
+                                  habit: h,
+                                  note: n,
+                                  playing: _playingNoteId == n.id,
+                                  settings: settings,
+                                  onTogglePlay: () => _toggleAudio(n),
+                                  onDelete: () => _confirmDeleteNote(n),
+                                  onEditText: n.kind == NoteKind.text
+                                      ? () => Navigator.of(context).push(
+                                            MaterialPageRoute<void>(
+                                              builder: (_) => NoteEditorPage(
+                                                habit: h,
+                                                settings: settings,
+                                                existingNote: n,
+                                              ),
                                             ),
-                                          ),
-                                        )
-                                    : null,
-                                onOpenPhoto: n.kind == NoteKind.image
-                                    ? () => showTimelinePhotoPreview(
-                                        context, h, n, () => _confirmDeleteNote(n))
-                                    : null,
-                              );
-                            }),
-                            ...streakItems.map((entry) {
-                              final h = entry.habit;
+                                          )
+                                      : null,
+                                  onOpenPhoto: n.kind == NoteKind.image
+                                      ? () => showTimelinePhotoPreview(context,
+                                          h, n, () => _confirmDeleteNote(n))
+                                      : null,
+                                );
+                              }
                               final accent = Color(h.colorValue);
                               return TimelineRailBadgeRow(
                                 habit: h,
@@ -417,6 +467,36 @@ class _TimelineScreenState extends ConsumerState<TimelineScreen> {
                                 ),
                               );
                             }),
+                            if (_visibleLimit < timelineEntries.length)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8),
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      setState(() => _visibleLimit += 25),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 14, vertical: 7),
+                                    decoration: BoxDecoration(
+                                      color: xc.card,
+                                      borderRadius: BorderRadius.circular(999),
+                                      border: Border.all(color: xc.border),
+                                    ),
+                                    child: Text(
+                                      AppCalendar.localizeDigits(
+                                        settings.localeCode == 'fa'
+                                            ? 'نمایش ۲۵ مورد قدیمی‌تر (${timelineEntries.length - _visibleLimit} باقی‌مانده)'
+                                            : 'Load 25 older (${timelineEntries.length - _visibleLimit} left)',
+                                        settings.localeCode,
+                                      ),
+                                      style: TextStyle(
+                                        fontSize: 11.5,
+                                        fontWeight: FontWeight.w700,
+                                        color: xc.muted,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ],

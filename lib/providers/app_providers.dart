@@ -58,6 +58,7 @@ class SettingsNotifier extends AsyncNotifier<AppSettings> {
         !mapEquals(prev.dayModeByDate, next.dayModeByDate) ||
         !mapEquals(prev.weekdayDayModes, next.weekdayDayModes) ||
         prev.widgetTheme != next.widgetTheme ||
+        prev.widgetOpacity != next.widgetOpacity ||
         prev.widgetHabitId != next.widgetHabitId ||
         !listEquals(prev.widgetListHabitIds, next.widgetListHabitIds) ||
         prev.widgetCelebrationOverlay != next.widgetCelebrationOverlay;
@@ -83,6 +84,7 @@ class SettingsNotifier extends AsyncNotifier<AppSettings> {
       isDarkMode: prefs.getBool('isDarkMode') ?? true,
       homeLayout: HomeLayout.values.asNameMap()[layoutStr] ?? HomeLayout.grid,
       widgetTheme: WidgetThemeMode.values.asNameMap()[wThemeStr] ?? WidgetThemeMode.dark,
+      widgetOpacity: (prefs.getDouble('widgetOpacity') ?? 1.0).clamp(0.0, 1.0),
       soundProfile: SoundProfile.values.asNameMap()[sndProfStr] ?? SoundProfile.pop,
       fontScaleMode:
           FontScaleMode.values.asNameMap()[fontScaleStr] ?? FontScaleMode.medium,
@@ -148,6 +150,7 @@ class SettingsNotifier extends AsyncNotifier<AppSettings> {
       prefs.setBool('isDarkMode', next.isDarkMode),
       prefs.setString('homeLayout', next.homeLayout.name),
       prefs.setString('widgetTheme', next.widgetTheme.name),
+      prefs.setDouble('widgetOpacity', next.widgetOpacity),
       prefs.setString('soundProfile', next.soundProfile.name),
       prefs.setString('fontScaleMode', next.fontScaleMode.name),
       prefs.setBool('widgetCelebrationOverlay', next.widgetCelebrationOverlay),
@@ -508,6 +511,8 @@ class SettingsNotifier extends AsyncNotifier<AppSettings> {
           HomeLayout.values.asNameMap()[m['homeLayout']] ?? cur.homeLayout,
       widgetTheme: WidgetThemeMode.values.asNameMap()[m['widgetTheme']] ??
           cur.widgetTheme,
+      widgetOpacity: ((m['widgetOpacity'] as num?)?.toDouble() ?? cur.widgetOpacity)
+          .clamp(0.0, 1.0),
       soundProfile: SoundProfile.values.asNameMap()[m['soundProfile']] ??
           cur.soundProfile,
       fontScaleMode: FontScaleMode.values.asNameMap()[m['fontScaleMode']] ??

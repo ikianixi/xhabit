@@ -90,6 +90,11 @@ object WidgetConfigStore {
         }
     }
 
+    fun resolveOpacityAlpha(prefs: SharedPreferences): Int {
+        val pct = prefs.getInt("widget_opacity_pct", 100).coerceIn(0, 100)
+        return (pct * 255 / 100).coerceIn(0, 255)
+    }
+
     fun setPendingPinAdaptivePreset(context: Context, habitId: String?) {
         val editor = prefs(context).edit()
         if (habitId.isNullOrBlank()) {

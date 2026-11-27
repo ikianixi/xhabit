@@ -1050,7 +1050,8 @@ class _WidgetsSettingsScreenState extends ConsumerState<WidgetsSettingsScreen>
         AppCalendar.logicalToday(DateTime.now(), settings.dayResetMinutes);
     final todayKey = AppCalendar.toDateKey(today);
 
-    final wCardBg = isLightWidget ? Colors.white : const Color(0xFF0B0B0E);
+    final wCardBg = (isLightWidget ? Colors.white : const Color(0xFF0B0B0E))
+        .withValues(alpha: settings.widgetOpacity);
     final wText = isLightWidget ? const Color(0xFF0F172A) : Colors.white;
     final wMuted =
         isLightWidget ? const Color(0xFF475569) : const Color(0xFF94A3B8);
@@ -1204,6 +1205,69 @@ class _WidgetsSettingsScreenState extends ConsumerState<WidgetsSettingsScreen>
                               ),
                             ),
                           ],
+                        ),
+                        const SizedBox(height: 12),
+                        Container(height: 1, color: xc.border),
+                        const SizedBox(height: 12),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              settings.localeCode == 'fa'
+                                  ? 'شفافیت پس‌زمینه ویجت'
+                                  : 'Widget Background Opacity',
+                              style: TextStyle(
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w700,
+                                color: xc.text,
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: xc.card2,
+                                borderRadius: BorderRadius.circular(999),
+                                border: Border.all(color: xc.border),
+                              ),
+                              child: Text(
+                                AppCalendar.localizeDigits(
+                                  '${(settings.widgetOpacity * 100).round()}%',
+                                  settings.localeCode,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w800,
+                                  color: xc.lime,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            trackHeight: 4,
+                            thumbShape: const RoundSliderThumbShape(
+                                enabledThumbRadius: 7),
+                            overlayShape: const RoundSliderOverlayShape(
+                                overlayRadius: 14),
+                          ),
+                          child: Slider(
+                            value: settings.widgetOpacity.clamp(0.0, 1.0),
+                            min: 0.0,
+                            max: 1.0,
+                            divisions: 20,
+                            activeColor: xc.lime,
+                            inactiveColor: xc.card2,
+                            onChanged: (val) async {
+                              final cur =
+                                  ref.read(settingsProvider).value ?? settings;
+                              await ref
+                                  .read(settingsProvider.notifier)
+                                  .updateSettings(
+                                      cur.copyWith(widgetOpacity: val));
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -2283,7 +2347,7 @@ class _WidgetsSettingsScreenState extends ConsumerState<WidgetsSettingsScreen>
           gradient: RadialGradient(
             center: Alignment.topRight,
             radius: 1.25,
-            colors: [accent.withValues(alpha: 0.16), wCardBg],
+            colors: [accent.withValues(alpha: 0.16 * settings.widgetOpacity), wCardBg],
           ),
         ),
         child: Directionality(
@@ -2425,7 +2489,7 @@ class _WidgetsSettingsScreenState extends ConsumerState<WidgetsSettingsScreen>
             gradient: RadialGradient(
               center: Alignment.topRight,
               radius: 1.25,
-              colors: [accent.withValues(alpha: 0.16), wCardBg],
+              colors: [accent.withValues(alpha: 0.16 * settings.widgetOpacity), wCardBg],
             ),
           ),
           child: Column(
@@ -2571,7 +2635,7 @@ class _WidgetsSettingsScreenState extends ConsumerState<WidgetsSettingsScreen>
           gradient: RadialGradient(
             center: Alignment.topRight,
             radius: 1.25,
-            colors: [accent.withValues(alpha: 0.16), wCardBg],
+            colors: [accent.withValues(alpha: 0.16 * settings.widgetOpacity), wCardBg],
           ),
         ),
         child: Column(

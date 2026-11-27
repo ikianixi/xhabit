@@ -167,7 +167,7 @@
   "confirmEraseTitle": "Erase All App Data",
   "confirmEraseMsg": "All habits, logs, and media notes will be erased and reset cleanly. Are you sure?",
   "aboutXHabit": "About XHabit",
-  "aboutVersion": "v1.0.0 • Local-First",
+  "aboutVersion": "v1.0.1 • Local-First",
   "aboutDesc": "A focused, tactile habit companion crafted for lasting daily consistency, zero-tracking privacy, and seamless Android home integration.",
   "aboutFeat1": "Jalali & Gregorian Engine",
   "aboutFeat2": "Adaptive Home Widgets",

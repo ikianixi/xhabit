@@ -100,7 +100,7 @@ private class ToDoListFactory(
             WidgetCanvasHelper.renderTextBitmap(
                 context = context,
                 text = row.title,
-                spSize = 11.5f,
+                spSize = 12.8f,
                 color = if (row.isDone) WidgetCanvasHelper.tintWithAlpha(txtMuted, 0.55f) else txtMain,
                 weight = 1,
                 maxWidthDp = if (row.note.isEmpty()) rowTitleMaxDp else (rowTitleMaxDp - 44f).coerceAtLeast(50f),
@@ -117,7 +117,7 @@ private class ToDoListFactory(
                 WidgetCanvasHelper.renderTextBitmap(
                     context = context,
                     text = row.note,
-                    spSize = 9.5f,
+                    spSize = 10.5f,
                     color = txtMuted,
                     weight = 0,
                     maxWidthDp = 52f,
