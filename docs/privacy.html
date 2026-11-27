@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XHabit — Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: dark light;
+      --bg: #0b0f14;
+      --card: #131922;
+      --text: #eef2f6;
+      --muted: #9aa7b8;
+      --accent: #84cc16;
+      --border: rgba(255,255,255,0.1);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fa;
+        --card: #ffffff;
+        --text: #111827;
+        --muted: #4b5563;
+        --accent: #4d7c0f;
+        --border: rgba(0,0,0,0.09);
+      }
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+      padding: 32px 16px;
+    }
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 26px;
+    }
+    h1 { margin-top: 0; font-size: 1.8rem; }
+    h2 { margin-top: 1.7rem; font-size: 1.18rem; color: var(--accent); }
+    p, li { color: var(--muted); }
+    strong, code { color: var(--text); }
+    a { color: var(--accent); }
+    .meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; }
+    .fa { direction: rtl; text-align: right; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Privacy Policy for XHabit</h1>
+    <div class="meta">
+      Last Updated: 2026-11-26 • App ID: <code>app.xhabit.tracker</code> •
+      <a href="https://github.com/iKianix/xhabit">github.com/iKianix/xhabit</a>
+    </div>
+
+    <p>
+      XHabit is a <strong>local-first, open-source habit tracker</strong>. We do not operate any backend servers,
+      do not sell user data, and include zero third-party ads or analytics SDKs.
+    </p>
+
+    <h2>1. Local Device Storage</h2>
+    <p>
+      Habits, categories, checklists, day modes, To Do List tasks, completion history, and optional journal media
+      (text, images, voice notes) are stored strictly on your device in local SQLite storage and encrypted preferences.
+    </p>
+
+    <h2>2. Optional Google Account, Drive &amp; Calendar Sync</h2>
+    <p>
+      When you choose to sign in with Google in Settings, XHabit communicates directly between your device and Google APIs
+      using OAuth 2.0. No intermediary XHabit server ever touches your credentials or data.
+    </p>
+    <ul>
+      <li><code>email</code> &amp; <code>profile</code>: Displays your connected Google email inside Settings.</li>
+      <li><code>https://www.googleapis.com/auth/drive.appdata</code>: Reads and updates only XHabit's hidden app-private folder (<code>xhabit_cloud_sync.json</code>). XHabit cannot access your personal Google Drive files.</li>
+      <li><code>https://www.googleapis.com/auth/calendar.events</code>: Optionally creates, updates, and deletes only XHabit habit schedule events in your primary Google Calendar.</li>
+    </ul>
+    <p>
+      XHabit's use and transfer of information received from Google APIs adheres strictly to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+      including the <strong>Limited Use</strong> requirements.
+    </p>
+
+    <h2>3. Optional Obsidian Vault &amp; Update Checks</h2>
+    <ul>
+      <li><strong>Obsidian Sync:</strong> Writes Markdown files strictly inside a dedicated <code>XHabit/</code> subfolder of the directory you select. Erasing data in XHabit removes only the <code>XHabit/</code> subfolder.</li>
+      <li><strong>Check for Updates:</strong> Queries GitHub's public Releases API only when you tap Check for Updates in Settings.</li>
+    </ul>
+
+    <h2>4. Deletion &amp; Contact</h2>
+    <p>
+      You may disconnect Google, delete XHabit's cloud backup copy, or erase all local data directly in Settings, or revoke permissions at
+      <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
+      Questions: <a href="https://github.com/iKianix/xhabit/issues">GitHub Issues</a>.
+    </p>
+
+    <section class="fa">
+      <h2>خلاصه حریم خصوصی (فارسی)</h2>
+      <p>
+        ایکس‌هبیت یک برنامه متن‌باز و بدون سرور واسط است. همه اطلاعات شما به‌صورت پیش‌فرض فقط روی گوشی خودتان می‌ماند.
+        در صورت اتصال به جیمیل، بکاپ فقط در فضای اختصاصی و مخفی خود برنامه (<code>appDataFolder</code>) ذخیره می‌شود و هیچ دسترسی به فایل‌های شخصی گوگل درایو یا رویدادهای شخصی تقویم شما ندارد.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sub_row_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layoutDirection="ltr"
+    android:minHeight="28dp"
+    android:orientation="horizontal"
+    android:paddingStart="14dp"
+    android:paddingEnd="4dp"
+    android:paddingVertical="3dp">
+
+    <ImageView
+        android:id="@+id/sub_box"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="7dp"
+        android:contentDescription="Checklist step"
+        android:scaleType="fitCenter" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/sub_title_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:adjustViewBounds="true"
+            android:contentDescription="Checklist item"
+            android:scaleType="fitStart" />
+    </FrameLayout>
+</LinearLayout>

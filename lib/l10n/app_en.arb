@@ -1,0 +1,515 @@
+{
+  "@@locale": "en",
+  "appTitle": "XHabit",
+  "navSettings": "Settings",
+  "onboardingTitle1": "Build Better Habits",
+  "onboardingBody1": "Track daily routines, count targets, and multi-step checklists effortlessly.",
+  "onboardingTitle2": "Quit Bad Habits",
+  "onboardingBody2": "Slip-free days build your streak automatically; log only if you slipped.",
+  "onboardingTitle3": "Media Journal & Adaptive Widgets",
+  "onboardingBody3": "Attach tinted notes, photos, and voice memos with adaptive Android home widgets.",
+  "getStarted": "Get Started",
+  "skip": "Skip",
+  "next": "Next",
+  "addHabit": "Add Habit",
+  "editHabit": "Edit Habit",
+  "addFirstHabit": "Add Your First Habit",
+  "loadDemoHabits": "Load Starter Pack",
+  "noHabitsYet": "No habits in this view yet. Tap + to create one.",
+  "noDueHabits": "All scheduled habits for this day are completed.",
+  "filterLabel": "Filter",
+  "allFilter": "All",
+  "dueFilter": "Due",
+  "allCategories": "All",
+  "newCategory": "New Category",
+  "newCategoryShort": "+ New",
+  "categoryName": "Category Name",
+  "renameCategoryHint": "New name...",
+  "keepOneCategory": "Keep at least one category",
+  "habitTitle": "Enter Habit Title",
+  "habitDescription": "Enter Description (optional)",
+  "habitType": "Type",
+  "habitModeBuild": "Build A Habit",
+  "habitModeQuit": "Quit A Habit",
+  "quitModeHint": "Tap daily to log a clean day and grow your quit streak.",
+  "buildModeHint": "Do it regularly. Tap to mark it done.",
+  "trackingStyle": "Tracking",
+  "styleBoolean": "Tick",
+  "styleCount": "Count",
+  "styleChecklist": "Checklist",
+  "tickModeHint": "Tap once to mark the day done.",
+  "countModeHint": "Tap + each time until your daily goal is met.",
+  "checklistModeHint": "Track multiple sub-steps for this habit.",
+  "dailyGoal": "Daily Target",
+  "dailyLimit": "Daily Limit",
+  "unitLabel": "Unit (e.g. Glasses)",
+  "addChecklistItem": "New checklist item...",
+  "addBtnLabel": "Add",
+  "scheduleLabel": "Frequency",
+  "freqDaily": "Everyday",
+  "freqWeekdays": "Specific Days of Week",
+  "freqMonthDays": "Specific Days of Month",
+  "freqPeriod": "Some Days Per Week",
+  "freqInterval": "Every N Days",
+  "intervalDaysCount": "Repeat every {days} days",
+  "@intervalDaysCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "colorLabel": "Color",
+  "iconLabel": "Icon",
+  "categoryLabel": "Category",
+  "enableReminder": "Daily Reminder",
+  "reminderHint": "Notify me at the scheduled time",
+  "reminderTime": "Reminder Time",
+  "showMedalBadgeTitle": "Show Medal Badge Beside Title",
+  "showMedalBadgeHint": "Off by default. Turn on to display this habit's highest streak badge next to its name.",
+  "save": "Save",
+  "delete": "Delete Habit",
+  "archive": "Archive Habit",
+  "unarchive": "Restore",
+  "archivedHabits": "Archive",
+  "noArchivedHabits": "No archived habits",
+  "deleteHabitConfirm": "Deleting this habit removes its full history and attachments. Are you sure?",
+  "deleteAttachmentTitle": "Delete Attachment",
+  "deleteAttachmentMsg": "Are you sure you want to delete this attachment?",
+  "yesDelete": "Yes, Delete",
+  "noCancel": "No",
+  "slipFreeDay": "Clean",
+  "slippedToday": "Slipped",
+  "completed": "Completed",
+  "inProgress": "In Progress",
+  "currentStreak": "Current Streak",
+  "bestStreak": "Best Streak",
+  "completionRate": "Score",
+  "streakPrefix": "Streak:",
+  "offScheduleToday": "Off-schedule today",
+  "customDaysLabel": "Custom Days",
+  "editCountTitle": "Count Editor",
+  "doneAction": "Done",
+  "addOneAction": "Add (+1)",
+  "unlockedStreakLabel": "day streak",
+  "ongoingStreakLabel": "day ongoing streak",
+  "taskStartedLabel": "Habit Started",
+  "daysUnit": "{count} days",
+  "@daysUnit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addTextNote": "Note",
+  "addImageNote": "Photo",
+  "addVoiceNote": "Audio",
+  "optionsTitle": "Options",
+  "takePhoto": "Take Photo",
+  "fromGallery": "From Gallery",
+  "voiceNoteTitle": "Voice Note",
+  "tapToRecord": "Tap to record",
+  "tapToStop": "Tap again to stop & save",
+  "noteTitleHint": "Title",
+  "notePlaceholder": "Note",
+  "noteSaved": "Note saved",
+  "noteDeleted": "Note deleted",
+  "weeklySummaryTitle": "Last 7 Days Summary",
+  "bestDayPrefix": "Best day:",
+  "reorderHabits": "Rearrange",
+  "darkMode": "Theme",
+  "oledBlack": "Dark",
+  "lightMode": "Light",
+  "homeLayoutLabel": "Layout",
+  "gridView": "Grid View",
+  "listView": "List View",
+  "generalSettings": "General",
+  "languageLabel": "Language",
+  "calendarSystem": "Calendar",
+  "calendarGregorian": "Gregorian",
+  "calendarJalali": "Jalali",
+  "weekStartDay": "Week Start",
+  "weekStartSaturday": "Saturday",
+  "weekStartSunday": "Sunday",
+  "weekStartMonday": "Monday",
+  "dailyRemindersTitle": "Daily Reminders",
+  "activeRemindersSuffix": "active",
+  "achievementSound": "Sound & Effects",
+  "soundMutedToast": "Sounds muted",
+  "soundOnToast": "Sounds unmuted",
+  "soundStyleLabel": "Sound Style",
+  "soundPop": "Soft Pop",
+  "soundDrop": "Water Drop",
+  "soundWood": "Warm Wood",
+  "soundMinimal": "Minimal Click",
+  "appLock": "App Lock (PIN)",
+  "appLockStatusOn": "On",
+  "appLockStatusOff": "Off",
+  "setPasscode": "Enter a new 4-digit PIN",
+  "confirmPasscode": "Confirm 4-digit PIN",
+  "enterPasscode": "Enter PIN to unlock",
+  "passcodeMismatch": "PINs did not match; try again",
+  "lockAppNow": "Lock App Now",
+  "changePasscode": "Change PIN",
+  "disablePasscode": "Turn Off Lock",
+  "unlockWithBiometric": "Unlock with Biometrics",
+  "wrongPasscode": "Incorrect PIN",
+  "categoriesLabel": "Categories",
+  "importBackup": "Import Data (JSON)",
+  "confirmImportTitle": "Restore Backup",
+  "confirmImportMsg": "Importing will replace your current habits and logs with this backup. Continue?",
+  "yesRestore": "Yes, Restore",
+  "backupSuccess": "Backup exported successfully",
+  "restoreSuccess": "Backup restored successfully",
+  "restoreInvalid": "Invalid backup file",
+  "eraseAllData": "Erase All Data",
+  "confirmEraseTitle": "Erase All App Data",
+  "confirmEraseMsg": "All habits, logs, and media notes will be erased and reset cleanly. Are you sure?",
+  "aboutXHabit": "About XHabit",
+  "aboutVersion": "v1.0.0 • Local-First",
+  "aboutDesc": "A focused, tactile habit companion crafted for lasting daily consistency, zero-tracking privacy, and seamless Android home integration.",
+  "aboutFeat1": "Jalali & Gregorian Engine",
+  "aboutFeat2": "Adaptive Home Widgets",
+  "aboutFeat3": "100% Offline & Portable",
+  "aboutFeat4": "Analytics & Media Notes",
+  "aboutFooter": "Built for clarity, daily momentum, and full data ownership",
+  "homeWidgetsTitle": "Android Widgets",
+  "adaptiveWidgetLabel": "Adaptive Habit Widget",
+  "dailyListWidgetLabel": "Daily Tasks List Widget",
+  "widgetThemeLabel": "Widget Theme",
+  "pinAdaptiveWidget": "Pin Adaptive Widget to Home",
+  "pinListWidget": "Pin Daily List Widget to Home",
+  "pinWidgetTriggered": "Launcher pin prompt requested",
+  "configureListHabits": "Select Habits for List Widget",
+  "refreshWidgets": "Sync Widgets Now",
+  "today": "Today,",
+  "undo": "Undo",
+  "movedToArchive": "Moved to Archive",
+  "taskCompleted": "Completed",
+  "enterValidTitleToast": "Please enter a habit title",
+  "achievementsTitle": "Achievements",
+  "analyticsTitle": "Habit Analytics",
+  "range14D": "14D",
+  "range30D": "30D",
+  "range90D": "90D",
+  "scheduledRate": "Scheduled completion rate",
+  "vsPrevPeriod": "vs previous period",
+  "dailyAverage": "Daily Avg",
+  "bounceBack": "1-Day Recovery",
+  "logsCountLabel": "Logs",
+  "trendTitle": "Completion Trend",
+  "avgScoreShort": "Score:",
+  "weekdayConsistency": "Weekday Consistency (Last 90D)",
+  "strongestDay": "Strongest:",
+  "weakestDay": "Needs focus:",
+  "smartInsight": "Smart Insight",
+  "analyticsInsightSlip": "Most slips happen on {weak} ({weakPct}%), while {best} ({bestPct}%) is your strongest day.",
+  "@analyticsInsightSlip": {
+    "placeholders": {
+      "weak": {
+        "type": "String"
+      },
+      "weakPct": {
+        "type": "int"
+      },
+      "best": {
+        "type": "String"
+      },
+      "bestPct": {
+        "type": "int"
+      }
+    }
+  },
+  "analyticsInsightClimb": "Consistency climbed +{delta}% vs the prior period, with a {recovery}% next-day recovery rate.",
+  "@analyticsInsightClimb": {
+    "placeholders": {
+      "delta": {
+        "type": "int"
+      },
+      "recovery": {
+        "type": "int"
+      }
+    }
+  },
+  "analyticsInsightSteady": "Strong consistency at {rate}%. Peak day is {best} with {recovery}% bounce-back after misses.",
+  "@analyticsInsightSteady": {
+    "placeholders": {
+      "rate": {
+        "type": "int"
+      },
+      "best": {
+        "type": "String"
+      },
+      "recovery": {
+        "type": "int"
+      }
+    }
+  },
+  "searchIconsHint": "Search icons...",
+  "tabPalettes": "Curated Palettes",
+  "tabCustom": "Custom Color",
+  "usedColors": "Used in Your Habits",
+  "toneBright": "Warm Signature",
+  "tonePastel": "Soft Pastel",
+  "toneVivid": "Deep Jewel",
+  "toneDeep": "Minimal Mono",
+  "hueLabel": "Color Hue",
+  "satLabel": "Saturation",
+  "litLabel": "Lightness",
+  "hexLabel": "Hex Code",
+  "applyColor": "Apply This Color",
+  "previewLabel": "Live Card & Pixel Grid Preview",
+  "sampleHabitPreview": "Sample Habit",
+  "medalUnlockedTitle": "New Streak Medal Unlocked!",
+  "allDailyDoneTitle": "100% Daily Goal Complete!",
+  "allDailyDoneSub": "All scheduled habits for today are done",
+  "fontSizeLabel": "Font Size",
+  "fontSmall": "Small",
+  "fontMedium": "Normal",
+  "fontLarge": "Large",
+  "storageFolderLabel": "Device Storage Folder",
+  "storageDefaultLabel": "Downloads / XHabit",
+  "chooseFolder": "Choose Folder",
+  "syncFolderNow": "Save Organized Data",
+  "folderSynced": "Organized database & media saved",
+  "downloadBackup": "Download Backup",
+  "shareBackup": "Share",
+  "backupDownloaded": "Backup downloaded to Downloads/XHabit",
+  "testNotification": "Test Notification",
+  "testNotificationSent": "Test notification dispatched!",
+  "notificationPermDenied": "Enable notifications & exact alarms in Android settings",
+  "widgetCelebrationLabel": "Widget Confetti Celebration",
+  "selectHabitTitle": "Select Habit",
+  "dayResetLabel": "Day Reset Time",
+  "dayResetHint": "Hours after midnight before the next day begins",
+  "streakGraceLabel": "Monthly Streak Grace",
+  "streakGraceDaysUnit": "{count}d / mo",
+  "@streakGraceDaysUnit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pauseHabit": "Pause Habit",
+  "resumeHabit": "Resume",
+  "pausedBadge": "Paused",
+  "pauseSavedToast": "Habit paused — streak protected",
+  "resumedToast": "Habit resumed",
+  "weeklyRate": "Weekly Rate",
+  "monthlyRate": "Monthly Rate",
+  "yearlyRate": "Yearly Rate",
+  "successRatesTitle": "Success Rates",
+  "tasksTabTitle": "To Do List",
+  "addOneOffHint": "Add a new task...",
+  "quantityOptionalHint": "Note (optional)",
+  "noOneOffTasks": "List is empty",
+  "autoBackupTitle": "Scheduled Auto Backup",
+  "autoBackupIntervalLabel": "Backup Frequency",
+  "autoBackupTimeLabel": "Preferred Time",
+  "autoBackupKeepLabel": "Backups To Keep",
+  "autoBackupCountUnit": "{count} backups",
+  "@autoBackupCountUnit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "autoBackupDaily": "Every Day",
+  "autoBackupEvery3Days": "Every 3 Days",
+  "autoBackupWeekly": "Weekly",
+  "autoBackupRunNow": "Backup Now",
+  "autoBackupDoneToast": "Auto backup saved",
+  "lastAutoBackupLabel": "Last Backup",
+  "neverBackedUp": "Never",
+  "quietHoursLabel": "Quiet Hours (Do Not Disturb)",
+  "quietHoursHint": "Pause reminders while you are unavailable",
+  "quietStartLabel": "From",
+  "quietEndLabel": "To",
+  "repeatReminderLabel": "Repeat If Unchecked",
+  "repeatOff": "Off",
+  "repeatMinutesUnit": "Every {mins}m",
+  "@repeatMinutesUnit": {
+    "placeholders": {
+      "mins": {
+        "type": "int"
+      }
+    }
+  },
+  "responseWindowLabel": "Response Wait Window",
+  "responseWindowMinsUnit": "{mins} mins",
+  "@responseWindowMinsUnit": {
+    "placeholders": {
+      "mins": {
+        "type": "int"
+      }
+    }
+  },
+  "smartLearningLabel": "Smart Pattern Scheduling",
+  "smartLearningHint": "Learns your real completion hours and avoids busy slots",
+  "smartSuggestionBadge": "Suggested: {time} ({pct}% match)",
+  "@smartSuggestionBadge": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "applySmartTime": "Apply",
+  "dayModeLabel": "Day Mode",
+  "dayModeAll": "All Modes",
+  "dayModeNormal": "Normal",
+  "dayModeWork": "Work Day",
+  "dayModeOff": "Day Off",
+  "dayModeTravel": "Travel",
+  "addCustomModeHint": "Custom mode name...",
+  "habitDayModesLabel": "Active Day Modes",
+  "habitDayModesHint": "Choose which modes include this habit (or pick All Modes)",
+  "quickTasksInHome": "To Do List",
+  "obsidianTitle": "Obsidian Sync",
+  "obsidianSub": "Keep a live, linked copy of your habits and notes in Obsidian",
+  "obsidianPickVault": "Choose Obsidian Folder",
+  "obsidianChangeVault": "Change Folder",
+  "obsidianExportNow": "Sync Now",
+  "obsidianExportedToast": "Obsidian synced successfully",
+  "obsidianVaultUnset": "Step 1: Select your Obsidian vault folder to begin",
+  "obsidianAutoSyncToggle": "Automatic Sync",
+  "obsidianAutoSyncHint": "Updates your Obsidian folder right after every change",
+  "obsidianHowItWorksTitle": "How it works",
+  "obsidianGuidePoint1": "Dedicated folder: XHabit creates its own XHabit folder inside your vault and never touches your personal notes.",
+  "obsidianGuidePoint2": "Everything linked: All your habits, daily logs, notes, and To Do List stay organized as connected pages.",
+  "obsidianGuidePoint3": "Instant updates: Whenever automatic sync is on, any edit in XHabit updates your Obsidian folder right away.",
+  "obsidianGuidePoint4": "Safe cleanup: If you erase all data in XHabit, only the XHabit folder inside Obsidian is removed.",
+  "obsidianLastSyncedLabel": "Last synced: {time}",
+  "@obsidianLastSyncedLabel": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "googleSyncTitle": "Google Account & Calendar",
+  "googleSub": "Sync your habits, notes, and schedule automatically with your Google account",
+  "googleSignInBtn": "Sign in with Google",
+  "googleSignOutBtn": "Disconnect",
+  "googleNotConnected": "Step 1: Sign in with your Google account to sync automatically",
+  "googleAutoDriveToggle": "Automatic Account Sync",
+  "googleAutoDriveHint": "Restores existing data on login and backs up every change automatically",
+  "googleCalendarToggle": "Automatic Google Calendar Sync",
+  "googleCalendarHint": "Keeps your active habits automatically updated on Google Calendar",
+  "googleSyncNowBtn": "Sync Now",
+  "googleSignedInMergedToast": "Signed in & data restored from your Google account",
+  "googleSyncOfflineToast": "Google sign-in or network connection unavailable",
+  "googleGuidePoint1": "Private storage: Backups stay in XHabit's private space inside your Google account without cluttering your Drive folders.",
+  "googleGuidePoint2": "Instant restore: Switching phones or reinstalling brings your habits and history back as soon as you sign in.",
+  "googleGuidePoint3": "Always synced: Changes in habits, notes, and calendar schedules update automatically in the background when online.",
+  "googleGuidePoint4": "Protected backup: Erasing local data on your phone keeps your cloud copy safe unless you choose to delete it.",
+  "googleDeleteCloudBtn": "Delete Cloud Copy",
+  "googleDeleteCloudConfirmMsg": "Remove XHabit's cloud backup from your Google account? Data on this phone will stay intact.",
+  "googleCloudDeletedToast": "Cloud backup removed",
+  "googleDriveSyncedToast": "Google sync completed",
+  "googleCalendarExportIcs": "Export .ics Schedule",
+  "googleCalendarExportedToast": "Calendar .ics schedule saved",
+  "dayModeCalendarTitle": "Schedule Modes on Calendar",
+  "dayModeCalendarHint": "Select a mode brush below, then tap calendar dates or weekdays",
+  "dayModeWeekdayTitle": "Weekly Auto-Mode",
+  "dayModeBrushClear": "Clear",
+  "dayModeClearAllDates": "Clear All Dates",
+  "dayModeAssignHabits": "Habits",
+  "dayModeAssignedCount": "{count} habits",
+  "@dayModeAssignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dayModeAllModesBadge": "All Modes",
+  "dayModeClearDateRule": "Clear scheduled mode for this date",
+  "dayModeCalendarTag": "Calendar",
+  "dayModesTabList": "Modes",
+  "dayModesTabCalendar": "Calendar",
+  "clearAllTasksBtn": "Clear",
+  "clearAllTasksConfirmTitle": "Clear To Do List",
+  "clearAllTasksConfirmMsg": "Are you sure you want to remove all items from your To Do List?",
+  "editDayModeTitle": "Edit Day Mode",
+  "dayModeNameHint": "Mode name...",
+  "dayModeFixedNameNote": "The 'All Modes' name is fixed and cannot be deleted",
+  "deleteDayModeConfirmTitle": "Delete Day Mode",
+  "deleteDayModeConfirmMsg": "Remove this mode from your list and calendar schedule?",
+  "editTaskTitle": "Edit Task",
+  "enterValidTitle": "Please enter a title",
+  "checkForUpdatesTitle": "Check for Updates",
+  "updateCheckingMsg": "Checking GitHub for updates...",
+  "updateUpToDateMsg": "You are on the latest version",
+  "updateAvailableTitle": "New Update Available",
+  "updateCurrentLabel": "Installed: v{ver}",
+  "@updateCurrentLabel": {
+    "placeholders": {
+      "ver": {
+        "type": "String"
+      }
+    }
+  },
+  "updateDownloadInstallBtn": "Download & Install",
+  "updateDownloadingPct": "Downloading update... {pct}%",
+  "@updateDownloadingPct": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "updateInstallNowBtn": "Install Downloaded APK",
+  "updateUnknownSourcesHint": "Enable 'Allow from this source' for XHabit in system settings, then tap Install",
+  "updateNoApkAssetMsg": "A newer release exists on GitHub, but no APK file is attached yet",
+  "updateCheckFailedMsg": "Could not reach GitHub. Check your internet connection",
+  "updateCheckAgainBtn": "Check Again",
+  "autoBackupFailedToast": "Auto backup failed; check storage permissions",
+  "obsidianExportFailedToast": "Obsidian sync failed; check folder permissions",
+  "activeHomeWidgetsTitle": "Active Home Widgets",
+  "noPlacedWidgetsMsg": "No widgets placed on your home screen yet. Once added, each widget appears here for independent control.",
+  "holdToReconfigureTip": "Tip: Long-press any widget on your home screen and tap Settings to reconfigure it anytime.",
+  "editWidgetAction": "Edit",
+  "widgetThemeFollowApp": "Auto",
+  "widgetThemeSectionHint": "Default look for widgets",
+  "widgetCelebrationHint": "Play confetti burst on widget completions",
+  "widgetAllDueToday": "All Due Today (Auto)",
+  "widgetCustomHabitsMode": "Pick Specific",
+  "widgetCustomTitleLabel": "Widget Header Title (Optional)",
+  "widgetCustomTitleHint": "e.g. Morning Routine (default: Today)",
+  "widgetUpdatedToast": "Widget updated",
+  "widgetPreviewStudioTitle": "Preview & Add Widget",
+  "widgetSelectAtLeastOne": "Select at least one habit or choose Auto",
+  "widgetCountSelected": "{count} habits selected",
+  "@widgetCountSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "widgetIdBadge": "Widget #{id}",
+  "@widgetIdBadge": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "todoWidgetLabel": "To Do List Widget",
+  "dayModeWidgetLabel": "Day Mode Switcher",
+  "pinToDoWidget": "Pin To Do Widget to Home",
+  "pinDayModeWidget": "Pin Day Mode Widget to Home",
+  "todoFilterLabel": "Tasks Filter",
+  "todoShowAllTasks": "All Tasks",
+  "todoPendingOnly": "Pending Only",
+  "dayModeCycleAllToggle": "Include 'All Modes'",
+  "dayModeCycleActiveOnly": "Active Modes Only",
+  "dayModeWidgetHint": "Tap left or right arrows to cycle Day Mode anytime."
+}

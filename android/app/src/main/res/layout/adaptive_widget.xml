@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg_dark"
+    android:clipToOutline="true"
+    android:layoutDirection="ltr">
+
+    <ImageView
+        android:id="@+id/adaptive_bg_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription=""
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/adaptive_empty_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:contentDescription="Empty state"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/adaptive_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layoutDirection="ltr"
+        android:orientation="vertical"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="13dp">
+
+        <!-- Header Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/adaptive_icon_badge"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Habit icon"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/adaptive_action_start"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Toggle habit"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:layoutDirection="ltr"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/adaptive_title_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Habit title"
+                    android:scaleType="fitStart" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="2dp"
+                    android:gravity="left|center_vertical"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/adaptive_sub_flame"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_marginEnd="3dp"
+                        android:contentDescription=""
+                        android:scaleType="fitCenter"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/adaptive_subtitle_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:contentDescription=""
+                        android:scaleType="fitStart" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/adaptive_compact_prog_img"
+                    android:layout_width="100dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription=""
+                    android:scaleType="fitXY"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- End-aligned flame streak pill (3x2 / 4x2 / 4x3 / 4x4) -->
+            <LinearLayout
+                android:id="@+id/adaptive_streak_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/adaptive_streak_val_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription=""
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/adaptive_end_flame"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:contentDescription=""
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <!-- Count pill stepper (4x3 / 4x4 count) -->
+            <LinearLayout
+                android:id="@+id/adaptive_stepper_pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/widget_pill_dark"
+                android:gravity="center_vertical"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="2dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/adaptive_step_minus"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="−"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/adaptive_step_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minWidth="30dp"
+                    android:text="0/5"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/adaptive_step_plus"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/adaptive_week7_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Last 7 days"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/adaptive_action_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="Toggle habit"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Full-width count progress bar on tall count cards (`4x3`/`4x4`) -->
+        <ImageView
+            android:id="@+id/adaptive_tall_prog_img"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="6dp"
+            android:contentDescription=""
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <!-- Month Grid / 12-week / 18-week Matrix Bitmap filling available area cleanly -->
+        <ImageView
+            android:id="@+id/adaptive_grid_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="Habit activity matrix"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/adaptive_kpi_sep"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#18FFFFFF"
+            android:visibility="gone" />
+
+        <!-- 3-Column KPI Footer (`4x3` / `4x4` ONLY) -->
+        <LinearLayout
+            android:id="@+id/adaptive_kpi_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/kpi_streak_val_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/kpi_streak_lbl_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/kpi_best_val_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/kpi_best_lbl_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/kpi_score_val_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/kpi_score_lbl_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Clickable Sub-steps Checklist (`4x4` ONLY, when habit style == checklist) -->
+        <LinearLayout
+            android:id="@+id/adaptive_checklist_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layoutDirection="ltr"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ad_sub_row_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="2.5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ad_sub_chk_0"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="7dp"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/ad_sub_txt_0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription=""
+                    android:scaleType="fitStart" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ad_sub_row_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="2.5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ad_sub_chk_1"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="7dp"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/ad_sub_txt_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription=""
+                    android:scaleType="fitStart" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ad_sub_row_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="2.5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ad_sub_chk_2"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="7dp"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/ad_sub_txt_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription=""
+                    android:scaleType="fitStart" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ad_sub_row_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="2.5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ad_sub_chk_3"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="7dp"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/ad_sub_txt_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription=""
+                    android:scaleType="fitStart" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ad_sub_row_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="2.5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ad_sub_chk_4"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="7dp"
+                    android:contentDescription="" />
+
+                <ImageView
+                    android:id="@+id/ad_sub_txt_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription=""
+                    android:scaleType="fitStart" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="app.xhabit.tracker.WidgetConfigureActivity"
+    android:initialLayout="@layout/day_mode_widget"
+    android:previewImage="@drawable/widget_preview_day_mode"
+    android:previewLayout="@layout/day_mode_widget_preview"
+    android:minWidth="110dp"
+    android:minHeight="56dp"
+    android:minResizeWidth="110dp"
+    android:minResizeHeight="56dp"
+    android:maxResizeWidth="360dp"
+    android:maxResizeHeight="115dp"
+    android:resizeMode="horizontal"
+    android:targetCellWidth="2"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    android:widgetFeatures="reconfigurable" />

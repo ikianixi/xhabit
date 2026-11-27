@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layoutDirection="ltr"
+    android:minHeight="38dp"
+    android:orientation="horizontal"
+    android:paddingVertical="3dp">
+
+    <ImageView
+        android:id="@+id/todo_accent_bar"
+        android:layout_width="4dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription=""
+        android:scaleType="fitCenter" />
+
+    <FrameLayout
+        android:id="@+id/todo_title_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_weight="1"
+        android:paddingVertical="5dp">
+
+        <ImageView
+            android:id="@+id/todo_title_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:adjustViewBounds="true"
+            android:contentDescription="Task title"
+            android:scaleType="fitStart" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/todo_note_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Task note"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/todo_action_btn"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:contentDescription="Toggle task"
+        android:scaleType="fitCenter" />
+</LinearLayout>

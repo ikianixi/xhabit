@@ -1,0 +1,15 @@
+analyzer:
+  errors:
+    deprecated_member_use: ignore
+
+linter:
+  rules:
+    avoid_empty_else: true
+    avoid_print: true
+    avoid_unnecessary_containers: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    unnecessary_this: true
+    use_key_in_widget_constructors: true
