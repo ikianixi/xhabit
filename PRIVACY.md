@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-11-26  
 **Application ID:** `app.xhabit.tracker`  
-**Source Repository:** https://github.com/iKianix/xhabit
+**Source Repository:** https://github.com/ikianixi/xhabit
 
 XHabit is a **local-first, open-source habit tracker**. We do not operate any backend servers, we do not sell user data, and the app contains zero third-party advertising or analytics trackers.
 
@@ -41,7 +41,7 @@ When you tap **Settings → Check for Updates**, the app queries the public GitH
 
 ## 4. Contact
 Questions or privacy requests can be opened at:  
-https://github.com/iKianix/xhabit/issues
+https://github.com/ikianixi/xhabit/issues
 
 ---
 

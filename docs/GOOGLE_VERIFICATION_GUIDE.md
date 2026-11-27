@@ -5,18 +5,18 @@
 ---
 
 ## ۱. انتشار فایل Privacy Policy (فایل آماده شده است)
-فایل‌های `PRIVACY.md` و `docs/privacy.html` در همین مخزن قرار دارند. وقتی کد را روی گیتهاب پابلیک (`iKianix/xhabit`) منتشر کردید، یکی از این دو آدرس را برای گوگل بگذارید:
+فایل‌های `PRIVACY.md` و `docs/privacy.html` در همین مخزن قرار دارند. وقتی کد را روی گیتهاب پابلیک (`ikianixi/xhabit`) منتشر کردید، یکی از این دو آدرس را برای گوگل بگذارید:
 - **بهترین گزینه (توصیه‌شده):** در تنظیمات مخزن گیتهاب بروید **Settings → Pages**، شاخه `main` و پوشه `/docs` را انتخاب و Save کنید. آن‌وقت آدرس HTTPS تمیز شما می‌شود:
-  `https://ikianix.github.io/xhabit/privacy.html`
+  `https://ikianixi.github.io/xhabit/privacy.html`
 - **یا لینک مستقیم گیتهاب:**
-  `https://github.com/iKianix/xhabit/blob/main/PRIVACY.md`
+  `https://github.com/ikianixi/xhabit/blob/main/PRIVACY.md`
 
 ---
 
 ## ۲. تکمیل بخش **Branding / OAuth Consent Screen** در Google Cloud Console
 - **App name:** `XHabit`
-- **Application home page:** `https://github.com/iKianix/xhabit`
-- **Application privacy policy link:** `https://ikianix.github.io/xhabit/privacy.html`
+- **Application home page:** `https://github.com/ikianixi/xhabit`
+- **Application privacy policy link:** `https://ikianixi.github.io/xhabit/privacy.html`
 - **Authorized domains:** `github.io` و `github.com`
 
 ---
